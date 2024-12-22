@@ -4,6 +4,12 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EZLEARN TXTBOOK</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0066cc">
+
+  <link rel="icon" href="/icons/icon-192x192.ico" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
   <style>
     :root {
       /* Màu mặc định (light mode) */
@@ -1398,6 +1404,15 @@
         questionToggleBtn.textContent = '❮'; // Đổi thành biểu tượng "<"
       }
     });
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(function(registration) {
+          console.log('Service Worker đăng ký thành công:', registration);
+        })
+        .catch(function(error) {
+          console.log('Đăng ký Service Worker thất bại:', error);
+        });
+    }
   </script>
 </body>
 </html>
